@@ -20,7 +20,7 @@ fields:
     dependencies:
       - stream
 
-  - name: data_record
+  - name: dataRecord
     prefix: data_records
     dependencies:
       - shard

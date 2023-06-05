@@ -16,7 +16,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import lombok.Builder;
 import lombok.Data;
 import lombok.SneakyThrows;
@@ -24,24 +23,9 @@ import org.opendatadiscovery.oddrn.annotation.PathField;
 import org.opendatadiscovery.oddrn.exception.EmptyPathValueException;
 import org.opendatadiscovery.oddrn.exception.GenerateException;
 import org.opendatadiscovery.oddrn.exception.PathDoesntExistException;
-import org.opendatadiscovery.oddrn.model.AirflowPath;
-import org.opendatadiscovery.oddrn.model.DynamodbPath;
 import org.opendatadiscovery.oddrn.model.OddrnPath;
-import org.opendatadiscovery.oddrn.model.GrpcServicePath;
-import org.opendatadiscovery.oddrn.model.HivePath;
-import org.opendatadiscovery.oddrn.model.KafkaConnectorPath;
-import org.opendatadiscovery.oddrn.model.KafkaPath;
-import org.opendatadiscovery.oddrn.model.MysqlPath;
-import org.opendatadiscovery.oddrn.model.PostgreSqlPath;
-import org.opendatadiscovery.oddrn.model.SnowflakePath;
-import org.opendatadiscovery.oddrn.model.SparkPath;
-import org.opendatadiscovery.oddrn.model.AwsS3Path;
-import org.opendatadiscovery.oddrn.model.CustomS3Path;
-import org.opendatadiscovery.oddrn.model.HdfsPath;
-import org.opendatadiscovery.oddrn.model.ODDPlatformDataSourcePath;
-import org.opendatadiscovery.oddrn.model.ODDPlatformDataEntityGroupPath;
-
 import org.opendatadiscovery.oddrn.util.GeneratorUtil;
+import org.reflections.Reflections;
 
 import static java.util.Locale.ENGLISH;
 import static java.util.function.Function.identity;
@@ -68,28 +52,9 @@ public class Generator {
     }
 
     private final Map<Class<? extends OddrnPath>, ModelDescription> cache =
-        Stream.of(
-            AirflowPath.class,
-            DynamodbPath.class,
-            GrpcServicePath.class,
-            HivePath.class,
-            KafkaConnectorPath.class,
-            KafkaPath.class,
-            MysqlPath.class,
-            PostgreSqlPath.class,
-            SnowflakePath.class,
-            SparkPath.class,
-            AwsS3Path.class,
-            CustomS3Path.class,
-            HdfsPath.class,
-            ODDPlatformDataSourcePath.class,
-            ODDPlatformDataEntityGroupPath.class
-        ).collect(
-            Collectors.toMap(
-                c -> c,
-                this::generateModel
-            )
-        );
+        new Reflections("org.opendatadiscovery.oddrn.model").getSubTypesOf(OddrnPath.class)
+                .stream()
+                .collect(Collectors.toMap(c -> c, this::generateModel));
 
     public static String capitalize(final String name) {
         if (name == null || name.length() == 0) {

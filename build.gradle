@@ -61,10 +61,18 @@ configure([project(':oddrn-generator-java')]) {
     dependencies {
         compileOnly libs.lombok
         annotationProcessor libs.lombok
+        implementation libs.reflections
 
         testImplementation libs.junit.jupiter.api
         testImplementation libs.junit.jupiter.params
         testRuntimeOnly libs.junit.jupiter.engine
+    }
+
+    checkstyle {
+        configFile = project(':').file('config/checkstyle/checkstyle.xml')
+        configProperties = ["suppressionFile": project(':').file('config/checkstyle/suppressions.xml')]
+        ignoreFailures = false
+        maxWarnings = 0
     }
 
     test {

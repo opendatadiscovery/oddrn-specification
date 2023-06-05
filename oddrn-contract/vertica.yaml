@@ -6,22 +6,22 @@ meta:
 fields:
   - name: host
 
-  - name: databases
+  - name: database
     prefix: databases
     dependencies:
       - host
 
-  - name: schemas
+  - name: schema
     prefix: schemas
     dependencies:
       - database
 
-  - name: tables
+  - name: table
     prefix: tables
     dependencies:
       - schema
 
-  - name: views
+  - name: view
     prefix: views
     dependencies:
       - schema
@@ -29,5 +29,5 @@ fields:
   - name: column
     prefix: columns
     dependencies:
-      - tables
+      - table
       - view

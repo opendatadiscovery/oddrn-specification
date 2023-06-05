@@ -3,11 +3,13 @@ mustache-java-compiler = '0.9.10'
 snake-yaml = '1.28'
 lombok = '1.18.20'
 junit-jupiter = '5.4.2'
+reflections = '0.10.2'
 
 [libraries]
 mustache-java-compiler = { module = 'com.github.spullara.mustache.java:compiler', version.ref = 'mustache-java-compiler' }
 snake-yaml = { module = 'org.yaml:snakeyaml', version.ref = 'snake-yaml' }
 lombok = { module = 'org.projectlombok:lombok', version.ref = 'lombok' }
+reflections = { module = 'org.reflections:reflections', version.ref = 'reflections' }
 junit-jupiter-api = {module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit-jupiter'}
 junit-jupiter-params = {module = 'org.junit.jupiter:junit-jupiter-params', version.ref = 'junit-jupiter'}
 junit-jupiter-engine = {module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'junit-jupiter'}

@@ -14,12 +14,12 @@ fields:
   - name: dataset
     prefix: datasets
     dependencies:
-      - databases
+      - database
 
   - name: column
     prefix: columns
     dependencies:
-      - datasets
+      - dataset
 
   - name: dashboard
     prefix: dashboards

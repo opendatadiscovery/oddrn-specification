@@ -1,7 +1,6 @@
 package org.opendatadiscovery.oddrn;
 
 import java.util.Map;
-
 import org.opendatadiscovery.oddrn.model.ClickhousePath;
 import org.opendatadiscovery.oddrn.model.HivePath;
 import org.opendatadiscovery.oddrn.model.MysqlPath;

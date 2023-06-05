@@ -16,4 +16,9 @@ public class {{ meta.java.class_name }} implements OddrnPath{{#meta.java.additio
     public String prefix() {
         return "{{prefix_oddrn}}";
     }
+
+    @Override
+    public String name() {
+        return "{{name}}";
+    }
 }
