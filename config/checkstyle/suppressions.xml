@@ -6,5 +6,5 @@
 
 <suppressions>
     <suppress files="[\\/]generated[\\/]" checks="."/>
-    <suppress files="[\\/]generated-jooq[\\/]" checks="."/>
+    <suppress files="[\\/]generated-oddrn[\\/]" checks="."/>
 </suppressions>
