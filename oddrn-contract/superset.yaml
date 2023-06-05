@@ -1,0 +1,27 @@
+name: superset
+prefix_oddrn: //superset
+meta:
+  java:
+    class_name: SupersetPathsModel
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: dataset
+    prefix: datasets
+    dependencies:
+      - databases
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - datasets
+
+  - name: dashboard
+    prefix: dashboards
+    dependencies:
+      - host

@@ -1,0 +1,12 @@
+name: airbyte
+prefix_oddrn: //airbyte
+meta:
+  java:
+    class_name: AirbytePathsModel
+fields:
+  - name: host
+
+  - name: connection
+    prefix: connections
+    dependencies:
+      - host

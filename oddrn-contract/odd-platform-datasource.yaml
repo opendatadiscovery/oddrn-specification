@@ -1,0 +1,9 @@
+name: odd_platform_datasource
+prefix_oddrn: //oddplatform
+meta:
+  java:
+    class_name: ODDPlatformDataSourcePath
+fields:
+  - name: datasourceId
+    type: long
+    prefix: datasources

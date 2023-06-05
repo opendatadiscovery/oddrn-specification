@@ -1,0 +1,38 @@
+name: hive
+prefix_oddrn: //hive
+meta:
+  java:
+    class_name: HivePath
+    additional_interfaces:
+      - RdsPath
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: schema
+    prefix: schemas
+    dependencies:
+      - database
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - schema
+
+  - name: view
+    prefix: views
+    dependencies:
+      - schema
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view
+
+  - name: owner
+    prefix: owners

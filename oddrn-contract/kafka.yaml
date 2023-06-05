@@ -1,0 +1,17 @@
+name: kafka
+prefix_oddrn: //kafka
+meta:
+  java:
+    class_name: KafkaPath
+fields:
+  - name: cluster
+
+  - name: topic
+    prefix: topics
+    dependencies:
+      - cluster
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - topic

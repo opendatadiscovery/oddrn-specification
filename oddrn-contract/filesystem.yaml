@@ -1,0 +1,17 @@
+name: filesystem
+prefix_oddrn: //filesystem
+meta:
+  java:
+    class_name: FilesystemPathModel
+fields:
+  - name: host
+
+  - name: path
+    prefix: paths
+    dependencies:
+      - host
+
+  - name: field
+    prefix: fields
+    dependencies:
+      - path

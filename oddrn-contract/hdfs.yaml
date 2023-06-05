@@ -1,0 +1,12 @@
+name: hdfs
+prefix_oddrn: //hdfs
+meta:
+  java:
+    class_name: HdfsPath
+fields:
+  - name: site
+
+  - name: path
+    prefix: paths
+    dependencies:
+      - site

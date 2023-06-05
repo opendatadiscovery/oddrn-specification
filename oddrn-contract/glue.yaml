@@ -1,0 +1,35 @@
+name: glue
+prefix_oddrn: //glue
+meta:
+  java:
+    class_name: GluePath
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - region
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+
+  - name: owner
+    prefix: owners
+
+  - name: job
+    prefix: jobs
+
+  - name: run
+    prefix: runs

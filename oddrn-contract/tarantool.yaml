@@ -1,0 +1,17 @@
+name: tarantool
+prefix_oddrn: //tarantool
+meta:
+  java:
+    class_name: TarantoolPathsModel
+fields:
+  - name: host
+
+  - name: space
+    prefix: spaces
+    dependencies:
+      - host
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - space

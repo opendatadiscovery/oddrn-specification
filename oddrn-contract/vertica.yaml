@@ -1,0 +1,33 @@
+name: vertica
+prefix_oddrn: //vertica
+meta:
+  java:
+    class_name: VerticaPathsModel
+fields:
+  - name: host
+
+  - name: databases
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: schemas
+    prefix: schemas
+    dependencies:
+      - database
+
+  - name: tables
+    prefix: tables
+    dependencies:
+      - schema
+
+  - name: views
+    prefix: views
+    dependencies:
+      - schema
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - tables
+      - view

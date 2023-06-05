@@ -1,0 +1,30 @@
+name: mysql
+prefix_oddrn: //mysql
+meta:
+  java:
+    class_name: MysqlPath
+    additional_interfaces:
+      - RdsPath
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: view
+    prefix: views
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view

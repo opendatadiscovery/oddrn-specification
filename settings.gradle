@@ -1,0 +1,3 @@
+rootProject.name = 'oddrn-specification'
+
+include 'oddrn-generator-java'

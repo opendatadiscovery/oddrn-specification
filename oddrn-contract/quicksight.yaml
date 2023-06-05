@@ -1,0 +1,31 @@
+name: quicksight
+prefix_oddrn: //quicksight
+meta:
+  java:
+    class_name: QuicksightPathsModel
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: dataset
+    prefix: datasets
+    dependencies:
+      - region
+
+  - name: analyse
+    prefix: analyses
+    dependencies:
+      - region
+
+  - name: dashboard
+    prefix: dashboards
+    dependencies:
+      - region
+
+  - name: data_source
+    prefix: data_sources
+    dependencies:
+      - region

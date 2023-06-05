@@ -1,0 +1,12 @@
+name: kafka_connect
+prefix_oddrn: //kafkaconnect
+meta:
+  java:
+    class_name: KafkaConnectorPath
+fields:
+  - name: host
+
+  - name: connector
+    prefix: connectors
+    dependencies:
+      - host

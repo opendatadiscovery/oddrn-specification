@@ -1,0 +1,22 @@
+name: databricks_feature_store
+prefix_oddrn: //databricks_feature_store
+meta:
+  java:
+    class_name: DatabricksFeatureStorePathModel
+fields:
+  - name: account
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - account
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table

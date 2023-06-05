@@ -1,0 +1,21 @@
+name: dynamodb
+prefix_oddrn: //dynamodb/cloud/aws
+meta:
+  java:
+    class_name: DynamodbPath
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - region
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table

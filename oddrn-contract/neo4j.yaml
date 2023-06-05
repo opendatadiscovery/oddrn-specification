@@ -1,0 +1,22 @@
+name: neo4j
+prefix_oddrn: //neo4j
+meta:
+  java:
+    class_name: Neo4jPathsModel
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: node
+    prefix: nodes
+    dependencies:
+      - database
+
+  - name: field
+    prefix: fields
+    dependencies:
+      - node

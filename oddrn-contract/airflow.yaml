@@ -1,0 +1,22 @@
+name: airflow
+prefix_oddrn: //airflow
+meta:
+  java:
+    class_name: AirflowPath
+fields:
+  - name: host
+
+  - name: dag
+    prefix: dags
+    dependencies:
+      - host
+
+  - name: task
+    prefix: tasks
+    dependencies:
+      - dag
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - task

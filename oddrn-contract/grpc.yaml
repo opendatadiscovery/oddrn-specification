@@ -1,0 +1,17 @@
+name: grpc_service
+prefix_oddrn: //grpc
+meta:
+  java:
+    class_name: GrpcServicePath
+fields:
+  - name: host
+
+  - name: service
+    prefix: services
+    dependencies:
+      - host
+
+  - name: method
+    prefix: methods
+    dependencies:
+      - service

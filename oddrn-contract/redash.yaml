@@ -1,0 +1,17 @@
+name: redash
+prefix_oddrn: //redash
+meta:
+  java:
+    class_name: RedashPathsModel
+fields:
+  - name: host
+
+  - name: query
+    prefix: queries
+    dependencies:
+      - host
+
+  - name: dashboard
+    prefix: dashboards
+    dependencies:
+      - host

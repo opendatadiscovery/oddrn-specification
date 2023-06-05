@@ -1,0 +1,37 @@
+name: athena
+prefix_oddrn: //athena
+meta:
+  java:
+    class_name: AthenaPath
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: catalog
+    prefix: catalogs
+    dependencies:
+      - region
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - catalog
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: view
+    prefix: views
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view

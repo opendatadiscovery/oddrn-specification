@@ -1,0 +1,17 @@
+name: http_service
+prefix_oddrn: //http
+meta:
+  java:
+    class_name: HttpServicePath
+fields:
+  - name: host
+
+  - name: method
+    prefix: methods
+    dependencies:
+      - host
+
+  - name: path
+    prefix: paths
+    dependencies:
+      - method

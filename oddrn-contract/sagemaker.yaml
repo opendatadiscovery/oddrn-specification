@@ -1,0 +1,31 @@
+name: sagemaker
+prefix_oddrn: //sagemaker
+meta:
+  java:
+    class_name: SagemakerPathsModel
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: experiment
+    prefix: experiments
+    dependencies:
+      - region
+
+  - name: trial
+    prefix: trials
+    dependencies:
+      - experiment
+
+  - name: job
+    prefix: jobs
+    dependencies:
+      - trial
+
+  - name: artifact
+    prefix: artifacts
+    dependencies:
+      - trial

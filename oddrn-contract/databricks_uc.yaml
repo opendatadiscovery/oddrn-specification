@@ -1,0 +1,27 @@
+name: databricks_unity_catalog
+prefix_oddrn: //databricks_unity_catalog
+meta:
+  java:
+    class_name: DatabricksUnityCatalogPathModel
+fields:
+  - name: account
+
+  - name: catalog
+    prefix: catalogs
+    dependencies:
+      - account
+
+  - name: schema
+    prefix: schemas
+    dependencies:
+      - catalog
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - schema
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table

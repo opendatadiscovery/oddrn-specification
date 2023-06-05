@@ -1,0 +1,32 @@
+name: clickhouse
+prefix_oddrn: //clickhouse
+meta:
+  java:
+    class_name: ClickhousePath
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: view
+    prefix: views
+    dependencies:
+      - database
+
+  - name: tableColumn
+    prefix: tables_columns
+    dependencies:
+      - table
+
+  - name: viewColumn
+    prefix: views_columns
+    dependencies:
+      - view

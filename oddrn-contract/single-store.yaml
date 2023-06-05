@@ -1,0 +1,28 @@
+name: singlestore
+prefix_oddrn: //singlestore
+meta:
+  java:
+    class_name: SingleStorePathsModel
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: view
+    prefix: views
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view

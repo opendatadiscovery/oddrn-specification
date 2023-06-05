@@ -1,0 +1,28 @@
+name: cassandra
+prefix_oddrn: //cassandra
+meta:
+  java:
+    class_name: CassandraPathsModel
+fields:
+  - name: host
+
+  - name: keyspace
+    prefix: keyspaces
+    dependencies:
+      - host
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - keyspace
+
+  - name: view
+    prefix: views
+    dependencies:
+      - keyspace
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view

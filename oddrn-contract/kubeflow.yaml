@@ -1,0 +1,22 @@
+name: kubeflow
+prefix_oddrn: //kubeflow
+meta:
+  java:
+    class_name: KubeflowPathsModel
+fields:
+  - name: host
+
+  - name: pipeline
+    prefix: pipelines
+    dependencies:
+      - host
+
+  - name: experiment
+    prefix: experiments
+    dependencies:
+      - host
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - experiment

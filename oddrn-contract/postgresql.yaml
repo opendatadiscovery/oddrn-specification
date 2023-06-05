@@ -1,0 +1,35 @@
+name: postgresql
+prefix_oddrn: //postgresql
+meta:
+  java:
+    class_name: PostgreSqlPath
+    additional_interfaces:
+      - RdsPath
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: schema
+    prefix: schemas
+    dependencies:
+      - database
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - schema
+
+  - name: view
+    prefix: views
+    dependencies:
+      - schema
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view

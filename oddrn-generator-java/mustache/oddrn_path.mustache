@@ -1,0 +1,19 @@
+package {{package}};
+
+import lombok.Builder;
+import lombok.Data;
+import org.opendatadiscovery.oddrn.annotation.PathField;
+
+@Data
+@Builder(toBuilder = true)
+public class {{ meta.java.class_name }} implements OddrnPath{{#meta.java.additional_interfaces}}, {{.}}{{/meta.java.additional_interfaces}} {
+{{#fields}}
+    @PathField{{#prefix}}(prefix = "{{prefix}}"{{#dependency}}, dependency = { {{{dependency}}} }{{/dependency}}){{/prefix}}{{^prefix}}{{#dependency}}(dependency = { {{{dependency}}} }){{/dependency}}{{/prefix}}
+    private final {{type}} {{name}};
+
+{{/fields}}
+    @Override
+    public String prefix() {
+        return "{{prefix_oddrn}}";
+    }
+}

@@ -1,0 +1,12 @@
+name: fivetran
+prefix_oddrn: //fivetran
+meta:
+  java:
+    class_name: FivetranPathsModel
+fields:
+  - name: host
+
+  - name: transformer
+    prefix: transformers
+    dependencies:
+      - host

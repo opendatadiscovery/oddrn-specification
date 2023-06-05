@@ -1,0 +1,17 @@
+name: elasticsearch
+prefix_oddrn: //elasticsearch
+meta:
+  java:
+    class_name: ElasticSearchPath
+fields:
+  - name: host
+
+  - name: index
+    prefix: indexes
+    dependencies:
+      - host
+
+  - name: field
+    prefix: fields
+    dependencies:
+      - index

@@ -1,0 +1,12 @@
+name: cubejs
+prefix_oddrn: //cubejs
+meta:
+  java:
+    class_name: CubeJsPathModel
+fields:
+  - name: host
+
+  - name: cube
+    prefix: cubes
+    dependencies:
+      - host

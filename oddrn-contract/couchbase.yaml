@@ -1,0 +1,27 @@
+name: couchbase
+prefix_oddrn: //couchbase
+meta:
+  java:
+    class_name: CouchbasePathsModel
+fields:
+  - name: host
+
+  - name: bucket
+    prefix: buckets
+    dependencies:
+      - host
+
+  - name: scope
+    prefix: scopes
+    dependencies:
+      - buckets
+
+  - name: collection
+    prefix: collections
+    dependencies:
+      - scopes
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - collections

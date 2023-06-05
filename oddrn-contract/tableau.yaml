@@ -1,0 +1,27 @@
+name: tableau
+prefix_oddrn: //tableau
+meta:
+  java:
+    class_name: TableauPath
+fields:
+  - name: host
+
+  - name: workbook
+    prefix: workbooks
+    dependencies:
+      - host
+
+  - name: view
+    prefix: views
+    dependencies:
+      - workbook
+
+  - name: datasource
+    prefix: datasources
+    dependencies:
+      - workbook
+
+  - name: project
+    prefix: projects
+    dependencies:
+      - host

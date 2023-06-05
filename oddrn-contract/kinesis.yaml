@@ -1,0 +1,26 @@
+name: kinesis
+prefix_oddrn: //kinesis
+meta:
+  java:
+    class_name: KinesisPathsModel
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: stream
+    prefix: streams
+    dependencies:
+      - region
+
+  - name: shard
+    prefix: shards
+    dependencies:
+      - stream
+
+  - name: data_record
+    prefix: data_records
+    dependencies:
+      - shard

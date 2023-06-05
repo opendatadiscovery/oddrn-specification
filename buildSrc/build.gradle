@@ -1,0 +1,22 @@
+plugins {
+    id 'groovy-gradle-plugin'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// FIXME: init script runs two times
+dependencies {
+    implementation libs.mustache.java.compiler
+    implementation libs.snake.yaml
+}
+
+gradlePlugin {
+    plugins {
+        GeneratorPlugin {
+            id = "org.opendatadiscovery.internal.plugin.oddrn-generate"
+            implementationClass = "org.opendatadiscovery.internal.oddrn.OddrnGeneratePlugin"
+        }
+    }
+}

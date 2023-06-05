@@ -1,0 +1,22 @@
+name: databricks_lakehouse
+prefix_oddrn: //databricks_lakehouse
+meta:
+  java:
+    class_name: DatabricksLakehousePathModel
+fields:
+  - name: account
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - account
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table

@@ -1,0 +1,22 @@
+name: mongo
+prefix_oddrn: //mongo
+meta:
+  java:
+    class_name: MongoPathsModel
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: collection
+    prefix: collections
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - collection

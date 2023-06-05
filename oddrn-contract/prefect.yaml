@@ -1,0 +1,27 @@
+name: prefect
+prefix_oddrn: //prefect
+meta:
+  java:
+    class_name: PrefectPath
+fields:
+  - name: host
+
+  - name: project
+    prefix: projects
+    dependencies:
+      - host
+
+  - name: flow
+    prefix: flows
+    dependencies:
+      - project
+
+  - name: task
+    prefix: tasks
+    dependencies:
+      - flow
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - task

@@ -1,0 +1,22 @@
+name: great_expectations
+prefix_oddrn: //great_expectations
+meta:
+  java:
+    class_name: GreatExpectationsPathsModel
+fields:
+  - name: host
+
+  - name: suite
+    prefix: suites
+    dependencies:
+      - host
+
+  - name: type
+    prefix: types
+    dependencies:
+      - suite
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - type

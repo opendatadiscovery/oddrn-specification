@@ -1,0 +1,8 @@
+name: odd_platform_deg
+prefix_oddrn: //oddplatform_deg
+meta:
+  java:
+    class_name: ODDPlatformDataEntityGroupPath
+fields:
+  - name: id
+    type: long

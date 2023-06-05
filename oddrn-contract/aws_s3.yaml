@@ -1,0 +1,13 @@
+name: aws_s3
+prefix_oddrn: //s3/cloud/aws
+meta:
+  java:
+    class_name: AwsS3Path
+fields:
+  - name: bucket
+    prefix: buckets
+
+  - name: key
+    prefix: keys
+    dependencies:
+      - bucket

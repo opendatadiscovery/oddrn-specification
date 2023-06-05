@@ -1,0 +1,33 @@
+name: oracle
+prefix_oddrn: //oracle
+meta:
+  java:
+    class_name: OraclePath
+fields:
+  - name: host
+
+  - name: schema
+    prefix: schemas
+    dependencies:
+      - host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - schema
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - database
+
+  - name: view
+    prefix: views
+    dependencies:
+      - database
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view

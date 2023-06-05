@@ -1,0 +1,7 @@
+name: docker_microservice
+prefix_oddrn: //microservice/docker
+meta:
+  java:
+    class_name: DockerMicroservicePath
+fields:
+  - name: image

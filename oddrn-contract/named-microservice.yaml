@@ -1,0 +1,7 @@
+name: named_microservice
+prefix_oddrn: //microservice/named
+meta:
+  java:
+    class_name: NamedMicroservicePath
+fields:
+  - name: name

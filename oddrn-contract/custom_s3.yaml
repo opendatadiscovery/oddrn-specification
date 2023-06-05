@@ -1,0 +1,17 @@
+name: custom_s3
+prefix_oddrn: //s3-custom
+meta:
+  java:
+    class_name: CustomS3Path
+fields:
+  - name: endpoint
+
+  - name: bucket
+    prefix: buckets
+    dependencies:
+      - endpoint
+
+  - name: key
+    prefix: keys
+    dependencies:
+      - bucket

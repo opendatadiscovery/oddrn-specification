@@ -1,0 +1,17 @@
+name: powerbi
+prefix_oddrn: //powerbi
+meta:
+  java:
+    class_name: PowerBiPathModel
+fields:
+  - name: account
+
+  - name: dataset
+    prefix: datasets
+    dependencies:
+      - account
+
+  - name: dashboard
+    prefix: dashboards
+    dependencies:
+      - account

@@ -1,0 +1,22 @@
+name: metabase
+prefix_oddrn: //metabase
+meta:
+  java:
+    class_name: MetabasePathModel
+fields:
+  - name: host
+
+  - name: collection
+    prefix: collections
+    dependencies:
+      - host
+
+  - name: dashboard
+    prefix: dashboards
+    dependencies:
+      - collection
+
+  - name: card
+    prefix: cards
+    dependencies:
+      - collection

@@ -1,0 +1,43 @@
+name: dbt
+prefix_oddrn: //dbt
+meta:
+  java:
+    class_name: DbtPath
+fields:
+  - name: host
+
+  - name: database
+    prefix: databases
+    dependencies:
+      - host
+
+  - name: schema
+    prefix: schemas
+    dependencies:
+      - database
+
+  - name: table
+    prefix: tables
+    dependencies:
+      - schema
+
+  - name: view
+    prefix: views
+    dependencies:
+      - schema
+
+  - name: column
+    prefix: columns
+    dependencies:
+      - table
+      - view
+
+  - name: test
+    prefix: tests
+    dependencies:
+      - database
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - test

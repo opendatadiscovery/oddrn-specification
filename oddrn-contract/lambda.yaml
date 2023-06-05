@@ -1,0 +1,16 @@
+name: lambda
+prefix_oddrn: //lambda
+meta:
+  java:
+    class_name: LambdaPathsModel
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: function
+    prefix: functions
+    dependencies:
+      - region

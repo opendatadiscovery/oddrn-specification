@@ -1,0 +1,145 @@
+plugins {
+    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+}
+
+ext {
+    env = findProperty('env') ?: 'dev'
+}
+
+group = 'org.opendatadiscovery'
+version = file('VERSION').text
+
+configure([project(':oddrn-generator-java')]) {
+    apply plugin: 'checkstyle'
+    apply plugin: 'java-library'
+    apply plugin: 'signing'
+    apply plugin: 'maven-publish'
+    apply plugin: 'org.opendatadiscovery.internal.plugin.oddrn-generate'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    oddrnGenerate {
+        mustacheTemplate = file("./mustache/oddrn_path.mustache")
+        contractPath = file("../oddrn-contract")
+        outputPath = file("./build/generated-oddrn/src/main/java")
+        modelPackage = "org.opendatadiscovery.oddrn.model"
+    }
+
+    compileJava.dependsOn oddrnGenerateTask
+
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src/main/java'
+                srcDir "$buildDir/generated-oddrn/src/main/java"
+            }
+        }
+    }
+
+    task sourceJar(type: Jar) {
+        archiveClassifier.set('sources')
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from sourceSets.main.allJava
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        archiveClassifier.set('javadoc')
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourceJar, javadocJar
+    }
+
+    dependencies {
+        compileOnly libs.lombok
+        annotationProcessor libs.lombok
+
+        testImplementation libs.junit.jupiter.api
+        testImplementation libs.junit.jupiter.params
+        testRuntimeOnly libs.junit.jupiter.engine
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging.showStandardStreams = true
+    }
+
+    if (env == 'prod') {
+        signing {
+            sign(publishing.publications)
+        }
+    }
+
+    publishing {
+        if (env == 'prod') {
+            repositories {
+                maven {
+                    url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
+                    credentials {
+                        username sonatypeUsername
+                        password sonatypePassword
+                    }
+                }
+            }
+        }
+
+        publications {
+            maven(MavenPublication) {
+                groupId = 'org.opendatadiscovery'
+                artifactId = 'oddrn-generator-java'
+                version = rootProject.version
+
+                from components.java
+
+                artifact(sourceJar)
+                artifact(javadocJar)
+
+                pom {
+                    name = 'Java ODDRN Generator'
+                    description = 'OpenDataDiscovery Resource Name generator for Java'
+                    url = 'https://github.com/opendatadiscovery/oddrn-specification'
+
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id = 'gosin'
+                            name = 'German Osin'
+                            organization = 'opendatadiscovery.org'
+                        }
+                    }
+
+                    scm {
+                        connection = 'scm:git:git://github.com/opendatadiscovery/oddrn-specification.git'
+                        developerConnection = 'scm:git:git://github.com/opendatadiscovery/oddrn-specification.git'
+                        url = 'https://github.com/opendatadiscovery/oddrn-specification'
+                    }
+                }
+            }
+        }
+    }
+    nexusPublishing {
+        repositories {
+            sonatype {
+                nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
+                snapshotRepositoryUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+
+                username = sonatypeUsername
+                password = sonatypePassword
+            }
+        }
+    }
+}

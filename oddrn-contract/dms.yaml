@@ -1,0 +1,21 @@
+name: dms
+prefix_oddrn: //dms
+meta:
+  java:
+    class_name: DmsPathsModel
+fields:
+  - name: account
+
+  - name: region
+    dependencies:
+      - account
+
+  - name: task
+    prefix: tasks
+    dependencies:
+      - region
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - task

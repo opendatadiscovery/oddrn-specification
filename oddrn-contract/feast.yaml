@@ -1,0 +1,22 @@
+name: feast
+prefix_oddrn: //feast
+meta:
+  java:
+    class_name: FeastPath
+fields:
+  - name: host
+
+  - name: featureview
+    prefix: featureviews
+    dependencies:
+      - host
+
+  - name: feature
+    prefix: features
+    dependencies:
+      - featureview
+
+  - name: subfeature
+    prefix: subfeatures
+    dependencies:
+      - feature

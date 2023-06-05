@@ -1,0 +1,17 @@
+name: spark
+prefix_oddrn: //spark
+meta:
+  java:
+    class_name: SparkPath
+fields:
+  - name: host
+
+  - name: job
+    prefix: jobs
+    dependencies:
+      - host
+
+  - name: run
+    prefix: runs
+    dependencies:
+      - job
