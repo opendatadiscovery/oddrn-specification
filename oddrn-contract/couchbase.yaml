@@ -14,14 +14,14 @@ fields:
   - name: scope
     prefix: scopes
     dependencies:
-      - buckets
+      - bucket
 
   - name: collection
     prefix: collections
     dependencies:
-      - scopes
+      - scope
 
   - name: column
     prefix: columns
     dependencies:
-      - collections
+      - collection

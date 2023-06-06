@@ -25,7 +25,7 @@ fields:
     dependencies:
       - region
 
-  - name: data_source
+  - name: dataSource
     prefix: data_sources
     dependencies:
       - region
