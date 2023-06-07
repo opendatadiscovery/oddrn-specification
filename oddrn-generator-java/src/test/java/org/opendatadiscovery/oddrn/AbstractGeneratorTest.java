@@ -21,6 +21,12 @@ public class AbstractGeneratorTest {
     }
 
     public void shouldFail(final OddrnPath path, final Class<? extends Exception> exception) {
-        final Exception thrown = assertThrows(exception, path::oddrn);
+        assertThrows(exception, path::oddrn);
+    }
+
+    public void shouldParse(final String oddrn, final OddrnPath expected) throws InvocationTargetException,
+            IllegalAccessException, NoSuchMethodException {
+        final Optional<OddrnPath> parsed = Generator.getInstance().parse(oddrn);
+        assertEquals(expected, parsed.get());
     }
 }

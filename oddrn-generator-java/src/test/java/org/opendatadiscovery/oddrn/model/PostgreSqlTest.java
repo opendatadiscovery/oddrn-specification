@@ -1,8 +1,14 @@
 package org.opendatadiscovery.oddrn.model;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Optional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.opendatadiscovery.oddrn.AbstractGeneratorTest;
+import org.opendatadiscovery.oddrn.Generator;
 import org.opendatadiscovery.oddrn.exception.EmptyPathValueException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PostgreSqlTest extends AbstractGeneratorTest {
 
@@ -41,5 +47,21 @@ public class PostgreSqlTest extends AbstractGeneratorTest {
                 .build(),
             EmptyPathValueException.class
         );
+    }
+
+    @Test
+    public void shouldParsePartialOddrn()
+            throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        final PostgreSqlPath expected = PostgreSqlPath.builder().build();
+        shouldParse("//postgresql/", expected);
+    }
+
+    @Test
+    public void shouldParsePartialOddrnWithHost()
+            throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        final PostgreSqlPath expected = PostgreSqlPath.builder()
+                .host("1.1.1.1")
+                .build();
+        shouldParse("//postgresql/host/1.1.1.1/dbname", expected);
     }
 }

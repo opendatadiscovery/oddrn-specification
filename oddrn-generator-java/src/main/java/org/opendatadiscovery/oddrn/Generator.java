@@ -80,9 +80,12 @@ public class Generator {
                 do {
                     final int fieldNamePos = withoutPrefix.indexOf("/", nextFieldPos);
                     final int valuePos = withoutPrefix.indexOf("/", fieldNamePos + 1);
+                    if (valuePos == -1) {
+                        break;
+                    }
                     nextFieldPos = withoutPrefix.indexOf("/", valuePos + 1);
 
-                    if (fieldNamePos >= 0 && valuePos >= 0) {
+                    if (fieldNamePos >= 0) {
                         final String fieldName = withoutPrefix.substring(fieldNamePos + 1, valuePos);
                         final String stringValue;
                         if (nextFieldPos > 0) {
