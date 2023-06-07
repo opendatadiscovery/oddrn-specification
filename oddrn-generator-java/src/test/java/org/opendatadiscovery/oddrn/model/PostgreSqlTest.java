@@ -50,13 +50,15 @@ public class PostgreSqlTest extends AbstractGeneratorTest {
     }
 
     @Test
-    public void shouldParsePartialOddrn() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void shouldParsePartialOddrn()
+            throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         final PostgreSqlPath expected = PostgreSqlPath.builder().build();
         shouldParse("//postgresql/", expected);
     }
 
     @Test
-    public void shouldParsePartialOddrnWithHost() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void shouldParsePartialOddrnWithHost()
+            throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         final PostgreSqlPath expected = PostgreSqlPath.builder()
                 .host("1.1.1.1")
                 .build();
