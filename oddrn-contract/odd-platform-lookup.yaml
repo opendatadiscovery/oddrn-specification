@@ -1,0 +1,8 @@
+name: odd_platform_lookup
+prefix_oddrn: //oddplatform_lookup_tables
+meta:
+  java:
+    class_name: ODDPlatformDataEntityLookupTablesPath
+fields:
+  - name: id
+    type: long
